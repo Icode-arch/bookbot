@@ -4,7 +4,6 @@ def main():
 	book_path ="books/frankenstein.txt"
 	text = get_book_text(book_path)
 	word_counts = number_of_words_in_book(text)
-	sorting = sorting_dictionary(characthers)
 	report = report_soldier(book_path, word_counts, characthers)
 
 def get_book_text(path):
@@ -28,30 +27,16 @@ def get_number_of_each_characther(Letter):
 			characthers[char] = 1
 	return char
 
-def sorting_dictionary(dictionary):
-	list = turning_to_list(dictionary)
-	list.sort(reverse=True, key=order)
-	print(list)
-
-
-def turning_to_list(list):
-	dict_list = []
-	for dictionary in characthers:
-		new_dict = {}
-		value = characthers[dictionary]
-		new_dict[dictionary] = value
-		dict_list.append(new_dict)
-	return dict_list
-
-def order(dict):
-	return dict[1]
-
 def report_soldier(book_path, word_counts, characthers):
 	
 	print(f"--- reporting on {book_path} SIR! ---")
 	print(f"{word_counts} words were found in the document!")
-	#for d in range(0, len(dict_list)):
-		#print(f"SIR! {d}")
+	new_dict= (dict(sorted(characthers.items(), key=lambda x: x[1], reverse = True)))
+	for	d in new_dict:
+		if d.isalpha():
+			value = new_dict[d]
+			print(f"The characther {d} was found {value} times")
+	print(f"--- thus concluded my report SIR! BOOT! SIR! ---")
 
 main()
 
